@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="js" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/fbevents.js"></script><script async="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/count.json"></script>
+			<meta charset="utf-8">
+	<meta name="google-site-verification" content="XzhxEv9n6_QIITfsjN1nNssRwvQ2stqTz70CuXeu-94">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="initial-scale=1.0; user-scalable=yes;">
+	<meta name="p:domain_verify" content="4fcf9878caa9f2ce8dbe0b8162fcb9c5">
+	<script type="text/javascript" async="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/device.js"></script><script type="text/javascript" async="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/ga.js"></script><script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script><!-- base href="https://www.binpress.com/" -->
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+		<link rel="stylesheet" href="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/jquery-ui.css" type="text/css" media="all">
+		<link href="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/a_002.css" rel="stylesheet" type="text/css"><link href="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/a.css" rel="stylesheet" type="text/css">	<!--[if IE 7 ]>
+	<link rel="stylesheet" href="styles/fonts/css/binpress-ie7.css" type="text/css" media="all" />
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	    <meta property="og:type" content="website">
+<meta property="og:url" content="http://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17">
+<meta property="og:image" content="http://www.binpress.com/images/logo/open-graph.png">
+<meta property="og:site_name" content="Binpress">
+<meta property="fb:admins" content="617568869,537023091">
+<meta property="fb:app_id" content="172491746142461">
+<meta name="description" content="PHP and MySQL is one of the most common stacks for web development, even in 2014. With it such a common combination powering so many websites, it is quite shocking that the most common online examples of using it are completely horrible and outdated by at least a decade. Try searching for &amp;quot;php mysql tutorial&amp;quot; and see what you find - it ain't pretty.
+">
+<meta property="og:description" content="PHP and MySQL is one of the most common stacks for web development, even in 2014. With it such a common combination powering so many websites, it is quite shocking that the most common online examples of using it are completely horrible and outdated by at least a decade. Try searching for &amp;quot;php mysql tutorial&amp;quot; and see what you find - it ain't pretty.
+">
+<meta property="og:title" content="Using PHP with MySQL - the right way | PHP">		<script type="text/javascript">var baseUrl ='';</script>
+		<script type="text/javascript">
+	  var _gaq = _gaq || [];
+var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+	  _gaq.push(['_setAccount', 'UA-2024380-7']);
+	  _gaq.push(['_setDomainName', '.binpress.com']);
+	  _gaq.push(['_setSiteSpeedSampleRate', 100]);
+	  _gaq.push(['_trackPageview']);
+	  _gaq.push(['_setCustomVar', 1, 'User-type','Visitor', 2]);
+	  setTimeout('_gaq.push([\'_trackEvent\', \'NonBounced\', \'Over 20 seconds\'])',20000);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	  
+	</script>	<link href="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/css.css" rel="stylesheet" type="text/css">
+	
+	<link href="https://plus.google.com/115913168422804876359" rel="publisher">
+	<link rel="shortcut icon" href="https://www.binpress.com/images/favicon.ico" type="image/x-icon">	<title>Using PHP with MySQL - the right way - Tutorial - Binpress</title><script async="true" type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/roundtrip.js"></script><script async="true" type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/X4QCHJ7ZUBFSTP7ACJ34TI"></script><style data-olark="true" type="text/css">.olark-key,#hbl_code,#olark-data{display: none !important;}</style><style data-olark="true" type="text/css">@media print {#habla_beta_container_do_not_rely_on_div_classes_or_names {display: none !important}}</style><link data-olark="true" rel="stylesheet" href="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/theme.css" type="text/css"><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out_005.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out_002.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out_003.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out_004.gif" width="1" height="1">
+<img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out.htm" width="1" height="1">
+<img style="border-style:none;" alt="" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/out.gif" width="1" height="1">
+</div></head>
+<body><div style="display: none;" id="olark"><olark><iframe id="olark-loader" frameborder="0"></iframe></olark></div>
+	<div id="container">
+		<div id="header">
+	<div class="width">
+
+		<div class="nav">
+			<div class="links-wrap">
+				<div class="links">
+					<a href="https://www.binpress.com/blog"><span>Blog</span></a>
+					<a href="https://www.binpress.com/browse"><span>Marketplace</span></a>
+										<a href="https://www.binpress.com/features/store"><span>Features</span></a>
+					<a href="https://www.binpress.com/pricing"><span>Pricing</span></a>
+					<a href="https://www.binpress.com/contact"><span>Contact</span></a>
+															<a href="https://www.binpress.com/login"><span>Login</span></a>
+									</div>
+			</div>
+						
+								<a class="button" href="https://www.binpress.com/register">Create your store</a>
+										<a class="show-menu icon-menu button"></a>
+		</div>
+		<a id="logo" href="https://www.binpress.com/" title="Homepage - Binpress"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/logo.png" alt="Binpress">
+			<br><small>Your own digital store</small></a>
+	</div>
+</div>
+		<div id="body" class="width">
+			<div class="tutorial">
+	<ul class="tutorials-nav">
+	<li>
+		<span class="title"><i class="icon-code"></i>Languages</span>
+		<ul>
+						<li><a href="https://www.binpress.com/tutorials?language=c"><small>(12)</small>C/C++</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=csharp"><small>(4)</small>C#</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=go"><small>(1)</small>Go</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=java"><small>(10)</small>Java</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=javascript"><small>(14)</small>JavaScript</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=lua"><small>(1)</small>Lua</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=objective-c"><small>(77)</small>Objective-C</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=php" class="selected"><small>(8)</small>PHP</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=python"><small>(10)</small>Python</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=ruby"><small>(1)</small>Ruby</a></li>
+						<li><a href="https://www.binpress.com/tutorials?language=swift"><small>(3)</small>Swift</a></li>
+					</ul>
+	</li>
+
+	<li>
+		<span class="title"><i class="icon-list-bullet"></i>Tags</span>
+		<ul>
+						<li><a href="https://www.binpress.com/tutorials?tag=ios"><small>(77)</small>ios</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=objective-c"><small>(71)</small>objective-c</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=os+x"><small>(65)</small>os x</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=game+development"><small>(16)</small>game development</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=iPhone"><small>(13)</small>iPhone</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=games"><small>(13)</small>games</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=android"><small>(11)</small>android</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=sfml"><small>(11)</small>sfml</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=c%2B%2B"><small>(11)</small>c++</a></li>
+						<li><a href="https://www.binpress.com/tutorials?tag=video+games"><small>(11)</small>video games</a></li>
+					</ul>
+	</li>
+</ul>	<div class="one-col">
+		<h1>Using PHP with MySQL - the right way</h1>
+		<div class="meta">
+			<a href="https://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17#comments" class="grey-button icon-comment-1 addcomment">
+								36							</a>
+			<span class="avatar tiniest"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/phpTcn9Vz-tiniest.png" alt=""></span>			<a href="https://www.binpress.com/profile/lionite/2">Lionite</a>
+				
+							<span class="time">Mar 27, 2014</span>
+									
+		</div>
+		
+		
+		<div class="tags">
+			<a href="https://www.binpress.com/tutorials?language=php"><i class="icon-code"></i>PHP</a><a href="https://www.binpress.com/tutorials?category=database"><i class="icon-code"></i>Database</a><a href="https://www.binpress.com/tutorials?tag=mysql"><i class="icon-list-bullet"></i>mysql</a><a href="https://www.binpress.com/tutorials?tag=mysqli"><i class="icon-list-bullet"></i>mysqli</a><a href="https://www.binpress.com/tutorials?tag=sql+injection"><i class="icon-list-bullet"></i>sql injection</a>		</div>
+		<div class="markdown">
+			<p>PHP and MySQL is one of the most common stacks for web 
+development, even in 2014. With it such a common combination powering so
+ many websites, it is quite shocking that the most common online 
+examples of using it are completely horrible and outdated by at least a 
+decade. Try searching for "php mysql tutorial" and see what you find - 
+it ain't pretty.</p>
+
+<p>In this tutorial I will try and show a simple, yet forward thinking 
+and secure way to use MySQL in PHP. I will explain the reasoning behind 
+each step and compare it with the less desired alternative. This 
+tutorial does not cover installing MySQL on your web server - it focuses
+ on using it in PHP. Perhaps we will cover that in a future tutorial, 
+but that part is usually pretty straightforward.</p>
+
+<h2>If it works, don't fix it</h2>
+
+<p>If they're so horrible, how come those examples are still so common? <strong>because they work</strong>.
+ Yes, the code shown on sites like W3Schools and others of its ilk, does
+ work. It's insecure, uses outdated methods, does not protect from 
+change and promotes bad habits, but it does work. Let's look at an 
+example:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">&lt;?</span><span class="pln">php</span><br></code></li><li class="L1"><code><span class="pln">$username</span><span class="pun">=</span><span class="str">"username"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">$password</span><span class="pun">=</span><span class="str">"password"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">$database</span><span class="pun">=</span><span class="str">"your_database"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">$field1</span><span class="pun">-</span><span class="pln">name</span><span class="pun">=</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'Value1'</span><span class="pun">];</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">$field2</span><span class="pun">-</span><span class="pln">name</span><span class="pun">=</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'Value2'</span><span class="pun">];</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">$field3</span><span class="pun">-</span><span class="pln">name</span><span class="pun">=</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'Value3'</span><span class="pun">];</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">$field4</span><span class="pun">-</span><span class="pln">name</span><span class="pun">=</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'Value4'</span><span class="pun">];</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">$field5</span><span class="pun">-</span><span class="pln">name</span><span class="pun">=</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'Value5'</span><span class="pun">];</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">mysql_connect</span><span class="pun">(</span><span class="pln">localhost</span><span class="pun">,</span><span class="pln">$username</span><span class="pun">,</span><span class="pln">$password</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln"></span><span class="lit">@mysql_select_db</span><span class="pun">(</span><span class="pln">$database</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">or</span><span class="pln"> </span><span class="kwd">die</span><span class="pun">(</span><span class="pln"> </span><span class="str">"Unable to select database"</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$query </span><span class="pun">=</span><span class="pln"> </span><span class="str">"INSERT INTO tablename VALUES('','$field1-name','$field2-name',</span><br></code></li><li class="L2"><code><span class="str">'$field3-name','$field4-name','$field5-name')"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">mysql_query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">mysql_close</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln"></span><span class="pun">?&gt;</span></code></li></ol></pre>
+
+<p><strong>What are the problems here?</strong></p>
+
+<ul>
+<li>User input is fed directly into query without escaping, making this code vulnerable to <a href="https://www.owasp.org/index.php/SQL_Injection">SQL injection</a> attacks (or even accidental). We always want to escape user input in database queries, or better yet - use <a href="http://en.wikipedia.org/wiki/Prepared_statement">prepared statements</a> (more on that below), so we don't end up with a <a href="http://xkcd.com/327/">Bobby Tables</a> situation.</li>
+<li><code>mysql_query()</code> function used directly in the code. While
+ this might seem fine for a simple tutorial, those tutorials target 
+inexperienced developers and instill bad habits. You want to abstract 
+database access in case you want to change your database or adapter (PHP
+ extension used to communicate with the database). <code>mysql_query()</code>
+ specifically has been deprecated as of PHP 5.5. It's interesting to 
+note that W3Schools updated their tutorial to use the MySQLi extension, 
+but most tutorials still use the <code>mysql_</code> functions to demonstrate usage.</li>
+<li>The error suppression operator is used (@), and a failure on 
+selecting the database kills the script with a generic message (which 
+many of you probably seen in the past on actual production websites). No
+ proper error handling is introduced. How do you debug this script if 
+you're a complete newbie to PHP and MySQL? </li>
+<li>A database connection is created manually with the credentials in 
+the same script running the query. We would want to abstract creating 
+the connection, so we have a central location to manage it, and likely 
+also keep the credentials in a separate file - especially important if 
+you serve your files directly from the document root directory (web 
+visible). You shouldn't do that anyway, but that is outside the scope of
+ this tutorial (perhaps in a follow up?) - but at least you should 
+protect your database credentials. As a side note, there is no error 
+handling on connecting to the database - which is a much more common 
+error than not being able to select one after connecting.</li>
+</ul>
+
+<h2>Doing it the right way</h2>
+
+<p>Let's break the process step-by-step, and see how we can improve on the example above.</p>
+
+<h3>Choosing an extension</h3>
+
+<p>Much of the functionality of PHP is delivered by extensions - plug-in
+ files that are loaded when you start your web server (or PHP process on
+ some configuration). Database access is delivered through extensions, 
+and there are multiple options to choose from.</p>
+
+<p>To keep a long story short, you can go with either the MySQLi or PDO 
+extension and do well. The MySQLi extension supports slightly more 
+use-cases than PDO, while PDO has a uniform API for other databases 
+(such as PostgreSQL and MsSQL), which is nice if you ever need to 
+switch. You can view <a href="http://www.php.net/manual/en/mysqlinfo.api.choosing.php">a more detailed comparison of the various extensions</a> over at the official PHP site.</p>
+
+<p>For the purposes of this tutorial we use the MySQLi extension. </p>
+
+<p><strong>A note about MySQLi:</strong></p>
+
+<p>PHP presents two ways to use MySQLi - procedural (functions) or 
+object-oriented (using the MySQLi set of classes). Both are identical 
+syntax and usage wise, except for the way you call the functions (as 
+standalone or on a MySQLi object). To make things simpler for people who
+ have not yet ventured into object oriented programming (OOP), I use the
+ procedural version. If you do use OOP, it should not be a problem to 
+use this tutorial as a guideline and apply it on the OOP style.</p>
+
+<h3>Connecting to the database</h3>
+
+<p>The first order of business is connecting to the database. With MySQLi, the function that does that is <code>mysqli_connect()</code>:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// Try and connect to the database</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$connection </span><span class="pun">=</span><span class="pln"> mysqli_connect</span><span class="pun">(</span><span class="str">'localhost'</span><span class="pun">,</span><span class="pln">$username</span><span class="pun">,</span><span class="pln">$password</span><span class="pun">,</span><span class="pln">$dbname</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="com">// If connection was not successful, handle the error</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$connection </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Handle error - notify administrator, log to a file, show an error screen, etc.</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Explanation:</p>
+
+<ul>
+<li><strong>First we connect to the database</strong> with the <code>mysqli_connect()</code>
+ which needs the host name, database username and password as a minimum 
+to create a connection. We also pass the database name as the 4th 
+parameter to select that database for the queries we will run. You can <a href="http://www.php.net/manual/en/mysqli.construct.php">pass additional parameters</a>
+ - port and socket, if your database requires that level of 
+configuration (the defaults work on most installations. You can also 
+change it in your PHP configuration).</li>
+<li><strong>Then we check if the connection was successful</strong>. 
+There are many reasons why the connection could fail - common ones 
+include wrong credentials ( / misconfigured database) and high database 
+usage load which causes the database to refuse new connections. How you 
+handle this error is up to you - common approaches include showing a 
+custom error page to the user, and notifying the administrator (via 
+Email or otherwise) about the error.</li>
+</ul>
+
+<p>Something is missing here though - where do the database credentials 
+come from? As I mentioned previously, it's not good practice to keep 
+those in the database connection script, especially if the PHP files are
+ inside the document root (which means they will be accessible directly 
+from the web). A server error (malfunction or intentional) could cause 
+those files to be displayed as text, revealing your database credentials
+ to everyone viewing it at the time.</p>
+
+<p>If you do not put your PHP scripts inside the document root, but rather include them from outside of it (commonly used with <a href="http://stackoverflow.com/questions/3313950/php-bootstrapping-basics">bootstrapping</a>),
+ then this is not a must. I still like to keep my configuration settings
+ in a separate file, which I can refer to any time I need to make 
+overall changes to my PHP application.</p>
+
+<p>Let's create a simple configuration file, which looks like this:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">[</span><span class="pln">database</span><span class="pun">]</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">username </span><span class="pun">=</span><span class="pln"> root</span><br></code></li><li class="L2"><code><span class="pln">password </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1234</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">dbname </span><span class="pun">=</span><span class="pln"> mydb</span></code></li></ol></pre>
+
+<p>This is the <code>ini</code> configuration format, for which PHP has very good support out of the box. Save it in a file called <code>config.ini</code>
+ and place it outside of the document root, so it is not accessible from
+ the web. We will now modify our code to load the configuration and use 
+it to create the database connection:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// Load configuration as an array. Use the actual location of your configuration file</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$config </span><span class="pun">=</span><span class="pln"> parse_ini_file</span><span class="pun">(</span><span class="str">'../config.ini'</span><span class="pun">);</span><span class="pln"> </span><br></code></li><li class="L2"><code><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="com">// Try and connect to the database</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">$connection </span><span class="pun">=</span><span class="pln"> mysqli_connect</span><span class="pun">(</span><span class="str">'localhost'</span><span class="pun">,</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'username'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'password'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'dbname'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><span class="com">// If connection was not successful, handle the error</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln"></span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$connection </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Handle error - notify administrator, log to a file, show an error screen, etc.</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>We've abstracted the credentials from the connection. But now we're 
+going to go one step higher, and put the connection process inside a 
+function, which we can later use any time we want to access the 
+database. Note that unless you close the connection to the database (as 
+the initial example showed), <strong>you only need to connect to the database once</strong> during the lifetime of the script.</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">function</span><span class="pln"> db_connect</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Define connection as a static variable, to avoid connecting more than once </span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">static</span><span class="pln"> $connection</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Try and connect to the database, if a connection has not been established yet</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(!</span><span class="pln">isset</span><span class="pun">(</span><span class="pln">$connection</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">// Load configuration as an array. Use the actual location of your configuration file</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $config </span><span class="pun">=</span><span class="pln"> parse_ini_file</span><span class="pun">(</span><span class="str">'../config.ini'</span><span class="pun">);</span><span class="pln"> </span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> mysqli_connect</span><span class="pun">(</span><span class="str">'localhost'</span><span class="pun">,</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'username'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'password'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'dbname'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// If connection was not successful, handle the error</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$connection </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Handle error - notify administrator, log to a file, show an error screen, etc.</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> mysqli_connect_error</span><span class="pun">();</span><span class="pln"> </span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $connection</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>This our database connection function. I prefixed it with <code>db_</code>,
+ which I will do as well for the rest of the database functions later. 
+If we were using OOP, we could have an even cleaner looking interface by
+ creating a database class which has the operations as the method names (<code>connect()</code>, <code>query()</code>, etc.). An OOP version of this tutorial has been included at the end of the tutorial.</p>
+
+<p>I added one small wrinkle in there - defining $connection as a static
+ variable, which means its state will be kept between function calls to <code>db_connect()</code>. This allows to connect just once to the database, and then just return the connection on future function calls. In the old <code>mysql_connect()</code>,
+ the connection would be kept globally by MySQL. We emulate that 
+behavior here, to avoid establishing a connection every time we need to 
+query the database.</p>
+
+<h3>Querying the database</h3>
+
+<p>Now that we have a connection, we can start querying the database. The simplest way to go about it is to use the <code>mysqli_query()</code> function.</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// Connect to the database</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$connection </span><span class="pun">=</span><span class="pln"> db_connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="com">// Query the database</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">$result </span><span class="pun">=</span><span class="pln"> mysqli_query</span><span class="pun">(</span><span class="pln">$connection</span><span class="pun">,</span><span class="pln">$query</span><span class="pun">);</span></code></li></ol></pre>
+
+<p>Pretty straightforward. The value of <code>$result</code> will be <code>false</code>
+ if the query failed, otherwise its value depends on the type of query 
+we ran. For SELECT, SHOW, DESCRIBE or EXPLAIN queries, it will return a <code>mysqli_result</code> object, and for all other queries it will return <code>true</code>. As before, let's wrap it up in a function:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">function</span><span class="pln"> db_query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Connect to the database</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> db_connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Query the database</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; $result </span><span class="pun">=</span><span class="pln"> mysqli_query</span><span class="pun">(</span><span class="pln">$connection</span><span class="pun">,</span><span class="pln">$query</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $result</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Now let's take a look at an example query:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// An insertion query. $result will be `true` if successful</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$result </span><span class="pun">=</span><span class="pln"> db_query</span><span class="pun">(</span><span class="str">"INSERT INTO `users` (`name`,`email`) VALUES ('John Doe','john.doe@gmail.com')"</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln"></span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$result </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Handle failure - log the error, notify administrator, etc.</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// We successfully inserted a row into the database</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>If $result is <code>false</code>, we would like to have the error 
+message returned by the database. For that purpose we'll create a 
+function that gets it for us:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">function</span><span class="pln"> db_error</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> db_connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> mysqli_error</span><span class="pun">(</span><span class="pln">$connection</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Then we could use it in the code above:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">if</span><span class="pun">(</span><span class="pln">$result </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; $error </span><span class="pun">=</span><span class="pln"> db_error</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Send the error to an administrator, log to a file, etc.</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<h3>Selecting rows</h3>
+
+<p>As mentioned above, running a SELECT query (and a couple of other similar types) will return a <code>mysqli_result</code> object. To get the row data itself from the database, we need an additional step that fetches that data. We'll use <code>mysqli_fetch_assoc</code> which retrieves rows from a <code>mysqli_result</code> object as an associated array - the array indexes will be the column names from the database.</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// A select query. $result will be a `mysqli_result` object if successful</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$result </span><span class="pun">=</span><span class="pln"> db_query</span><span class="pun">(</span><span class="str">"SELECT `name`,`email` FROM `users` WHERE id=5"</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$result </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Handle failure - log the error, notify administrator, etc.</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln"></span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Fetch all the rows in an array</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; $rows </span><span class="pun">=</span><span class="pln"> array</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$row </span><span class="pun">=</span><span class="pln"> mysqli_fetch_assoc</span><span class="pun">(</span><span class="pln">$result</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $rows</span><span class="pun">[]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> $row</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Now we have an array containing the rows returned from the database. 
+If no rows were returned - the array would be empty. Since fetching rows
+ is a very common use case, we'll wrap it up in its own function:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">function</span><span class="pln"> db_select</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; $rows </span><span class="pun">=</span><span class="pln"> array</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; $result </span><span class="pun">=</span><span class="pln"> db_query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// If query failed, return `false`</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$result </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// If query was successful, retrieve all the rows into an array</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$row </span><span class="pun">=</span><span class="pln"> mysqli_fetch_assoc</span><span class="pun">(</span><span class="pln">$result</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $rows</span><span class="pun">[]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> $row</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $rows</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Querying the database now is dead simple:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pln">$rows </span><span class="pun">=</span><span class="pln"> db_select</span><span class="pun">(</span><span class="str">"SELECT `name`,`email` FROM `users` WHERE id=5"</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln"></span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$rows </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; $error </span><span class="pun">=</span><span class="pln"> db_error</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// Handle error - inform administrator, log to file, show error page, etc.</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>If <code>db_select()</code> returned <code>false</code>, we need to handle the error. Otherwise we can use the returned database data in our application. </p>
+
+<h3>Escaping dynamic values and user input</h3>
+
+<p>In the previous two example queries, I manually placed the values I 
+passed to the database in the query - the user name and email in the 
+INSERT query, and the user id in the SELECT query. If we replace those 
+values with variables that contain unknown values, and especially user 
+input, we need to escape it properly. There are a few characters - 
+notably quotation marks and carriage returns - that will break our 
+query, and in the case of user input allow an attacker to compromise our
+ database (an attack referred to as SQL injection).</p>
+
+<p>For that purpose, we'll use the <code>mysqli_real_escape_string()</code>
+ function. Since it needs a database connection, we'll go ahead and wrap
+ it in its own function. In addition, since we only need to escape 
+strings, we might as well quote the value at the same time:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">function</span><span class="pln"> db_quote</span><span class="pun">(</span><span class="pln">$value</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> db_connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="str">"'"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> mysqli_real_escape_string</span><span class="pun">(</span><span class="pln">$connection</span><span class="pun">,</span><span class="pln">$value</span><span class="pun">)</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"'"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>If we are not sure of the type of value we pass to the database, it's
+ always best to treat it as a string, escape and quote it. Let's look at
+ a common example - form submission. We'll use our previous INSERT query
+ with user input:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// Quote and escape form submitted values</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$name </span><span class="pun">=</span><span class="pln"> db_quote</span><span class="pun">(</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'username'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">$email </span><span class="pun">=</span><span class="pln"> db_quote</span><span class="pun">(</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'email'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><span class="com">// Insert the values into the database</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">$result </span><span class="pun">=</span><span class="pln"> db_query</span><span class="pun">(</span><span class="str">"INSERT INTO `users` (`name`,`email`) VALUES ("</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> $name </span><span class="pun">.</span><span class="pln"> </span><span class="str">","</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> $email </span><span class="pun">.</span><span class="pln"> </span><span class="str">")"</span><span class="pun">);</span></code></li></ol></pre>
+
+<p>And there you have it - a safe way to use user input in your queries.
+As mentioned earlier in the tutorial, an alternative to escaping / 
+quoting values is using prepared statements. MySQLi use of prepared is 
+somewhat verbose and requires more effort to abstract properly to 
+functions like I did here. If you are interested, check out this <a href="http://mattbango.com/notebook/code/prepared-statements-in-php-and-mysqli/">nice introduction to prepared statements in MySQLi</a>.</p>
+
+<h3>Object oriented version</h3>
+
+<p>I personally use OOP exclusively when I program in PHP. Since this 
+tutorial is aimed at beginners, I did not want the requirement of OOP 
+proficiency to be able to understand it. In case you come from a 
+background with a different language and have experience with OOP, here 
+is how the above procedural code would look:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">Db</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">// The database connection</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">protected</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> $connection</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">/**</span><br></code></li><li class="L5"><code><span class="com">&nbsp; &nbsp; &nbsp;* Connect to the database</span><br></code></li><li class="L6"><code><span class="com">&nbsp; &nbsp; &nbsp;* </span><br></code></li><li class="L7"><code><span class="com">&nbsp; &nbsp; &nbsp;* @return bool false on failure / mysqli MySQLi object instance on success</span><br></code></li><li class="L8"><code><span class="com">&nbsp; &nbsp; &nbsp;*/</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> connect</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> &nbsp; &nbsp;</span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Try and connect to the database</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(!</span><span class="pln">isset</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">::</span><span class="pln">$connection</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Load configuration as an array. Use the actual location of your configuration file</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $config </span><span class="pun">=</span><span class="pln"> parse_ini_file</span><span class="pun">(</span><span class="str">'./config.ini'</span><span class="pun">);</span><span class="pln"> </span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">self</span><span class="pun">::</span><span class="pln">$connection </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> mysqli</span><span class="pun">(</span><span class="str">'localhost'</span><span class="pun">,</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'username'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'password'</span><span class="pun">],</span><span class="pln">$config</span><span class="pun">[</span><span class="str">'dbname'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// If connection was not successful, handle the error</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">::</span><span class="pln">$connection </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Handle error - notify administrator, log to a file, show an error screen, etc.</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">self</span><span class="pun">::</span><span class="pln">$connection</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">/**</span><br></code></li><li class="L6"><code><span class="com">&nbsp; &nbsp; &nbsp;* Query the database</span><br></code></li><li class="L7"><code><span class="com">&nbsp; &nbsp; &nbsp;*</span><br></code></li><li class="L8"><code><span class="com">&nbsp; &nbsp; &nbsp;* @param $query The query string</span><br></code></li><li class="L9"><code><span class="com">&nbsp; &nbsp; &nbsp;* @return mixed The result of the mysqli::query() function</span><br></code></li><li class="L0"><code><span class="com">&nbsp; &nbsp; &nbsp;*/</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Connect to the database</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> $this </span><span class="pun">-&gt;</span><span class="pln"> connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">// Query the database</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $result </span><span class="pun">=</span><span class="pln"> $connection </span><span class="pun">-&gt;</span><span class="pln"> query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $result</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">/**</span><br></code></li><li class="L2"><code><span class="com">&nbsp; &nbsp; &nbsp;* Fetch rows from the database (SELECT query)</span><br></code></li><li class="L3"><code><span class="com">&nbsp; &nbsp; &nbsp;*</span><br></code></li><li class="L4"><code><span class="com">&nbsp; &nbsp; &nbsp;* @param $query The query string</span><br></code></li><li class="L5"><code><span class="com">&nbsp; &nbsp; &nbsp;* @return bool False on failure / array Database rows on success</span><br></code></li><li class="L6"><code><span class="com">&nbsp; &nbsp; &nbsp;*/</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="kwd">select</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $rows </span><span class="pun">=</span><span class="pln"> array</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $result </span><span class="pun">=</span><span class="pln"> $this </span><span class="pun">-&gt;</span><span class="pln"> query</span><span class="pun">(</span><span class="pln">$query</span><span class="pun">);</span><span class="pln"></span><br></code></li><li class="L0"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">$result </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L2"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$row </span><span class="pun">=</span><span class="pln"> $result </span><span class="pun">-&gt;</span><span class="pln"> fetch_assoc</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $rows</span><span class="pun">[]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> $row</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $rows</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">/**</span><br></code></li><li class="L0"><code><span class="com">&nbsp; &nbsp; &nbsp;* Fetch the last error from the database</span><br></code></li><li class="L1"><code><span class="com">&nbsp; &nbsp; &nbsp;* </span><br></code></li><li class="L2"><code><span class="com">&nbsp; &nbsp; &nbsp;* @return string Database error message</span><br></code></li><li class="L3"><code><span class="com">&nbsp; &nbsp; &nbsp;*/</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> error</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> $this </span><span class="pun">-&gt;</span><span class="pln"> connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> $connection </span><span class="pun">-&gt;</span><span class="pln"> error</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln">&nbsp; &nbsp; </span><span class="com">/**</span><br></code></li><li class="L0"><code><span class="com">&nbsp; &nbsp; &nbsp;* Quote and escape value for use in a database query</span><br></code></li><li class="L1"><code><span class="com">&nbsp; &nbsp; &nbsp;*</span><br></code></li><li class="L2"><code><span class="com">&nbsp; &nbsp; &nbsp;* @param string $value The value to be quoted and escaped</span><br></code></li><li class="L3"><code><span class="com">&nbsp; &nbsp; &nbsp;* @return string The quoted and escaped string</span><br></code></li><li class="L4"><code><span class="com">&nbsp; &nbsp; &nbsp;*/</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">&nbsp; &nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> quote</span><span class="pun">(</span><span class="pln">$value</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; $connection </span><span class="pun">=</span><span class="pln"> $this </span><span class="pun">-&gt;</span><span class="pln"> connect</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> </span><span class="str">"'"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> $connection </span><span class="pun">-&gt;</span><span class="pln"> real_escape_string</span><span class="pun">(</span><span class="pln">$value</span><span class="pun">)</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"'"</span><span class="pun">;</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"></span><br></code></li><li class="L9"><code><span class="pln"></span><span class="pun">}</span></code></li></ol></pre>
+
+<p>Usage is identical to before, with OOP syntax instead of function calls. Our previous example queries would look like this:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="com">// Our database object</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$db </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Db</span><span class="pun">();</span><span class="pln"> &nbsp; &nbsp;</span><br></code></li><li class="L2"><code><span class="pln"></span><br></code></li><li class="L3"><code><span class="pln"></span><span class="com">// Quote and escape form submitted values</span><span class="pln"></span><br></code></li><li class="L4"><code><span class="pln">$name </span><span class="pun">=</span><span class="pln"> $db </span><span class="pun">-&gt;</span><span class="pln"> quote</span><span class="pun">(</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'username'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L5"><code><span class="pln">$email </span><span class="pun">=</span><span class="pln"> $db </span><span class="pun">-&gt;</span><span class="pln"> quote</span><span class="pun">(</span><span class="pln">$_POST</span><span class="pun">[</span><span class="str">'email'</span><span class="pun">]);</span><span class="pln"></span><br></code></li><li class="L6"><code><span class="pln"></span><br></code></li><li class="L7"><code><span class="pln"></span><span class="com">// Insert the values into the database</span><span class="pln"></span><br></code></li><li class="L8"><code><span class="pln">$result </span><span class="pun">=</span><span class="pln"> $db </span><span class="pun">-&gt;</span><span class="pln"> query</span><span class="pun">(</span><span class="str">"INSERT INTO `users` (`name`,`email`) VALUES ("</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> $name </span><span class="pun">.</span><span class="pln"> </span><span class="str">","</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> $email </span><span class="pun">.</span><span class="pln"> </span><span class="str">")"</span><span class="pun">);</span></code></li></ol></pre>
+
+<p>A select query:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pln">$db </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Db</span><span class="pun">();</span><span class="pln"></span><br></code></li><li class="L1"><code><span class="pln">$rows </span><span class="pun">=</span><span class="pln"> $db </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="kwd">select</span><span class="pun">(</span><span class="str">"SELECT `name`,`email` FROM `users` WHERE id=5"</span><span class="pun">);</span></code></li></ol></pre>
+
+<p>And there you have it. </p>
+
+<h2>Source files and contributing</h2>
+
+<p>All the code found in this tutorial is <a href="https://github.com/erangalp/database-tutorial">hosted on GitHub</a>
+ under an MIT license for your convenience. If you have suggestions for 
+improvement or other feedback, use the comments below or submit a pull 
+request. Hope you found it useful!</p>
+		</div>
+				<div class="related">
+			<h2>Was this tutorial useful? Check out ZF Database Model / Mapper:</h2>
+			<a class="thumb-link" href="https://www.binpress.com/app/zf-database-model-mapper/25"><img class="thumb" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/model-thumb.png" alt=""></a>
+			<div class="summary"><p>Providing the missing link in the Zend 
+Framework MVC structure, Lionite_Db_Model provide a strong base 
+structure for database-based domain models. </p>
+				<div class="rating"><span class="value-title" title="5"></span><ul title="Rating 5 out of 5"><li class="icon-star"></li><li class="icon-star"></li><li class="icon-star"></li><li class="icon-star"></li><li class="icon-star"></li></ul></div>			</div>
+			<a class="button" href="https://www.binpress.com/app/zf-database-model-mapper/25">More <i class="icon-angle-right"></i></a>
+		</div>
+				<div class="series">
+					<a class="next" href="https://www.binpress.com/tutorial/introduction-to-postgis-part-1/24"><span class="book"></span> 
+				<em>Introduction to PostGIS: Part 1</em>
+							</a>
+						<a class="prev" href="https://www.binpress.com/tutorial/getting-started-with-rabbitmq-in-php/164"><span class="book"></span> 
+				<em>Getting Started with RabbitMQ in PHP</em>
+							</a>
+						
+		</div>			
+				<form class="subscribe-form" method="post" action="newsletter/signup">
+			<img class="subscribe-icon" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/subscribe-big.png">
+			<h3>Get new tutorials delivered to your Inbox</h3>
+			<p>New tutorials will be sent to your Inbox once a week. You can unsubscribe at any time.</p>
+			
+			<input name="name" placeholder="Full name" class="text" type="text"><input name="email" placeholder="Email" class="text" type="text">			<input name="tutorial_id" value="17" type="hidden">
+			<button type="submit" class="red-button icon-plane">Subscribe</button>
+			
+		</form>
+		<div class="eoa-links">
+			<a class="button floater" href="https://www.binpress.com/content/write-for-us"><i class="icon-pencil"></i>Write for us!</a>
+			<a class="red-button" href="https://www.binpress.com/tutorials"><i class="icon-book-open"></i>More Tutorials</a>
+		</div>
+		<div class="social-buttons">
+	<span class="share-link socialb"><a rel="nofollow" href="http://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17?slk"><em class="icon-link-1"></em><span class="counter">Link</span></a>
+		<input value="http://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17" readonly="readonly" class="text" type="text">
+	</span>
+	<a rel="nofollow" class="socialb facebook" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17&amp;t=Using+PHP+with+MySQL+-+the+right+way+-+Tutorial+-+" count-url="https%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17" target="_blank" attr-count="0"><em class="icon-facebook"></em><span class="counter">Share</span></a>
+	<a rel="nofollow" class="socialb twitter" href="https://twitter.com/intent/tweet?text=Using+PHP+with+MySQL+-+the+right+way+-+Tutorial+-+&amp;url=http%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17" count-url="https%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17"><em class="icon-twitter"></em><span class="counter">Tweet</span></a>
+	
+	<a rel="nofollow" class="socialb linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17&amp;title=Using+PHP+with+MySQLthe+right+wayTutorial&amp;source=Binpress" count-url="https%3A%2F%2Fwww.binpress.com%2Ftutorial%2Fusing-php-with-mysql-the-right-way%2F17" attr-count="11"><em class="icon-linkedin"></em><span class="counter">11</span></a>
+
+</div>		<div class="tutorial-comments">
+	<a name="comments"></a>
+	<h2>36 comments</h2>
+	
+		<div class="comment-form">
+	
+		<span class="avatar small"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/default-small.png" alt=""></span>		
+		<form method="post" action="tutorials/comment">
+			<input name="return" value="tutorial/using-php-with-mysql-the-right-way/17" type="hidden">
+			<input name="tutorial_id" value="17" type="hidden">
+			<input name="parent_id" type="hidden">
+			<input name="reply_to" type="hidden">
+			<textarea cols="50" rows="4" name="content"></textarea>
+			<br>
+			<div class="login">
+	<small>Sign-in now</small>
+	<a rel="nofollow" class="grey-button login-button" href="https://www.binpress.com/login?return=tutorial/using-php-with-mysql-the-right-way/17">Sign-in</a>
+</div>
+<div class="register">
+	<small>Or enter your name and Email</small>
+	<input name="name" placeholder="Full name" class="text" type="text">
+	<input name="email" placeholder="Email" class="text" type="email">	
+	<span class="cld"><input name="bca7d9" value="5d239e" type="text"> <input name="e79944" type="text"></span></div>
+<button type="submit">Send</button>
+			
+		</form>
+
+	</div>
+
+			
+		<ul class="comments inline" data-action="tutorials/savecomment">
+		<li id="comment379">
+	<a name="comment379"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="379" type="hidden">
+				<a name="comment379"></a>
+				<span class="avatar small color3"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/16278ee3e70c0b1816f668966bec20aa.gif" alt=""><span>PP</span></span>		<span class="author">Petar Petrov</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 months ago</span>
+				<blockquote class="comment">Thank you for your great tutorial. Can you make an example using prepared statements? </blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/379">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment366">
+	<a name="comment366"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="366" type="hidden">
+				<a name="comment366"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/e405701910be6eefc68bc6f83c000b37.gif" alt=""><span>ST</span></span>		<span class="author">Sergio Teixeira</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>7 months ago</span>
+				<blockquote class="comment">Hello, i use your function db_connect and db_query(), but i have a question: how i use mysqli_insert_id() and mysqli_affected_rows(), because the value return 0.
+
+example: db_query("INSERT INTO  ....
+after this: mysqli_affected_rows(db_connect());
+                mysqli_insert_id(db_connect());
+
+The value return 0</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/366">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment371">
+	<a name="comment371"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="371" type="hidden">
+				<input name="parent_id" value="366" type="hidden">
+				<a name="comment371"></a>
+				<span class="avatar small color6"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/1b6892b92809929787b2fcc078d8c528.jpg" alt=""><span>NB</span></span>		<span class="author">Nimitz Batioco</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>6 months ago</span>
+				<blockquote class="comment">If you're using the class, you can use this
+
+<pre>public function insert_id() {
+        $connection = $this -&gt; connect();
+        return $connection -&gt; insert_id;
+    }
+</pre></blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/371/parent/366">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li><li id="comment372">
+	<a name="comment372"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="372" type="hidden">
+				<input name="parent_id" value="366" type="hidden">
+				<a name="comment372"></a>
+				<span class="avatar small color6"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/1b6892b92809929787b2fcc078d8c528.jpg" alt=""><span>NB</span></span>		<span class="author">Nimitz Batioco</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>6 months ago</span>
+				<blockquote class="comment">Remember, you can only use this after insert statement has been made. I never tried it using other queries for I believe you can use it only for after insert query has passed.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/372/parent/366">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment359">
+	<a name="comment359"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="359" type="hidden">
+				<a name="comment359"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/6d59eee2d0551bfbdb66cbcb0ad11a63.gif" alt=""><span>NG</span></span>		<span class="author">Narfle T Garthunk</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>7 months ago</span>
+				<blockquote class="comment">So I read above, "If db_select() returned false, we need to handle the error. Otherwise we can use the returned database data in our application." But no example of 'using' the data. Okay, here is an example:
+
+Remember he assigned the data to $rows and the database columns are name and email. We take each 'row' in $rows and use it AS $record
+
+foreach($rows as $record) {
+    echo $record['name'] . "'s email address is " . $record['email'] ."<br>" ;
+}
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/359">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment317">
+	<a name="comment317"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="317" type="hidden">
+				<a name="comment317"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/e80b32f8dccdc427a1ab03de96e3505f.gif" alt=""><span>L</span></span>		<span class="author">Larita</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Hi,
+
+How can I check if there are any rows returned by sql Query, and if not then echo something to external file?  I'm using procedural.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/317">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment360">
+	<a name="comment360"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="360" type="hidden">
+				<input name="parent_id" value="317" type="hidden">
+				<a name="comment360"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/6d59eee2d0551bfbdb66cbcb0ad11a63.gif" alt=""><span>NG</span></span>		<span class="author">Narfle T Garthunk</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>7 months ago</span>
+				<blockquote class="comment">So I read above, "If db_select() returned false, we need to handle the error. Otherwise we can use the returned database data in our application." But no example of 'using' the data. Okay, here is an example:
+
+Remember he assigned the data to $rows and the database columns are name and email. We take each 'row' in $rows and use it AS $record
+
+foreach($rows as $record) {
+    echo $record['name'] . "'s email address is " . $record['email'] ."&lt;br /&gt;" ;
+}
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/360/parent/317">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment313">
+	<a name="comment313"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="313" type="hidden">
+				<a name="comment313"></a>
+				<span class="avatar small color5"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/9d6164c80c0db997be5ade672c26a7df.gif" alt=""><span>MM</span></span>		<span class="author">miss mubashar</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">can some body tell me please that how can we seperate database queries from php code??or simply how we can identify database queries?</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/313">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment309">
+	<a name="comment309"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="309" type="hidden">
+				<a name="comment309"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/9f36de9eb9fddeb763282847df7346ef.gif" alt=""><span>DA</span></span>		<span class="author">Dean Atkins</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Sorry but I'm a complete idiot sometimes so I have to ask how exactly can I echo or print out the values/rows selected from the database when using the db_select function. </blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/309">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment311">
+	<a name="comment311"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="311" type="hidden">
+				<input name="parent_id" value="309" type="hidden">
+				<a name="comment311"></a>
+				<span class="avatar small color6"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/e1c42aaeba5e767f2c762d0532083d0a.gif" alt=""><span>M</span></span>		<span class="author">MAQ</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">i have a same fucking question</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/311/parent/309">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li><li id="comment361">
+	<a name="comment361"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="361" type="hidden">
+				<input name="parent_id" value="309" type="hidden">
+				<a name="comment361"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/6d59eee2d0551bfbdb66cbcb0ad11a63.gif" alt=""><span>NG</span></span>		<span class="author">Narfle T Garthunk</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>7 months ago</span>
+				<blockquote class="comment">Remember he assigned the data to $rows and the database columns are name and email. We take each 'row' in $rows and use it AS $record
+
+foreach($rows as $record) {
+    echo $record['name'] . "'s email address is " . $record['email'] ."&lt;br /&gt;" ;
+}
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/361/parent/309">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment298">
+	<a name="comment298"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="298" type="hidden">
+				<a name="comment298"></a>
+				<span class="avatar small color7"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/4263ca68cc213d3d033b9305360235d9.png" alt=""><span>KP</span></span>		<span class="author">khushi parihar</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">very essential information!!!!!!!!!!!!A Biggest thank!</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/298">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment295">
+	<a name="comment295"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="295" type="hidden">
+				<a name="comment295"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/efeba87e4c95fa3ecd2c54963e6f16b6.gif" alt=""><span>T</span></span>		<span class="author">tito</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Hi! ¿Where I could put the config.ini file? I have this structure "/public_html/blog/index.php". If I put the file here "/public_html/config.ini", is still accesible. ¿I must use .htaccess or something? Thanks.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/295">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment362">
+	<a name="comment362"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="362" type="hidden">
+				<input name="parent_id" value="295" type="hidden">
+				<a name="comment362"></a>
+				<span class="avatar small color0"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/6d59eee2d0551bfbdb66cbcb0ad11a63.gif" alt=""><span>NG</span></span>		<span class="author">Narfle T Garthunk</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>7 months ago</span>
+				<blockquote class="comment">Using the web hosting control panel's file manager, go to the server root directory, the parent of public_html. Create a new folder and put the config.ini there. To have the script find the file, it is the parent directory of WEB Root (public_html) or ../new_folder/config.ini 
+From the web page: 
+web root /
+current directory ./
+parent directory ../
+
+So for your site, it would be located 2 parents up from blog or 
+../../new_folder/config.ini
+
+Hope this helps.
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/362/parent/295">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment289">
+	<a name="comment289"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="289" type="hidden">
+				<a name="comment289"></a>
+				<span class="avatar small color3"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/ac7bdf0b47fe316bc5da6ca493eb33a5.jpg" alt=""><span>DS</span></span>		<span class="author">Deepak Singh</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Thanks Lionite for such a nice tutorial. Looking forward for more tutorials. Thanks once again.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/289">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment286">
+	<a name="comment286"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="286" type="hidden">
+				<a name="comment286"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/2587b1fd97003084f8bc7921b41e8763.gif" alt=""><span>R</span></span>		<span class="author">rossi</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">I recommend to put the DB connect into the constructor, this will safe the "$connection = $this -&gt; connect();" statement in each function and the static declaration of the connection which can be turned into a private variable.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/286">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment285">
+	<a name="comment285"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="285" type="hidden">
+				<a name="comment285"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/e0d812387f91c0cd46309ff72d64e83a.gif" alt=""><span>T</span></span>		<span class="author">Toufoo</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Can someone help us (the beginners), we need sample CRUD codes that implements this.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/285">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment281">
+	<a name="comment281"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="281" type="hidden">
+				<a name="comment281"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/4def9ae5b32502d59a4c874997490932.gif" alt=""><span>M</span></span>		<span class="author">Manish</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">foreach ($rows as $value) {
+   	extract($value);
+   	echo $id.'<br>';
+	echo $name.'<br>';
+}
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/281">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment279">
+	<a name="comment279"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="279" type="hidden">
+				<a name="comment279"></a>
+				<span class="avatar small color7"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/9444efecf764e9875ead23a5183e9ca7.jpg" alt=""><span>AC</span></span>		<span class="author">Alexander Rhett Crammer</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Perfect! Thank you so much.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/279">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment260">
+	<a name="comment260"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="260" type="hidden">
+				<a name="comment260"></a>
+				<span class="avatar small color6"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/aab953f500d2a2787a781587861eec1e.gif" alt=""><span>AH</span></span>		<span class="author">Angela M Hill</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">I have found some of the above information of value. My database is within WampServer 2.5, running on windows 7(32bit). I have created a web based form for inputting data into the database and have been able to use your functions for that. However, I found debugging my code extremely difficult. I am a beginner with only basic knowledge, and that knowledge has not been much help since the update of the SQL module in WampServer, between the version I used at school and the version I am using now. Once I had been able to eradicate some of the errors, I was no longer getting notifications of them. I also was not getting any notifications of my php scripts working. The only way I knew that it had began to work, was the addition of the records appearing in the database in admin view. I am now wanting to display select queries in html with  imbedded php scripts. I can't seem to get the function db_select to display results.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/260">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment227">
+	<a name="comment227"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="227" type="hidden">
+				<a name="comment227"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/0496896ead72a355c6a82134cc988544.jpg" alt=""><span>TV</span></span>		<span class="author">Todd Vance</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">First off..THANK YOU!  Learned a TON.   
+But I am getting a weird thing with the db_quote  ... I get the values being stored with single quotes in my DB.   The only way I can get this to work right is to remove those concatted single quotes and just add them in my query.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/227">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment220">
+	<a name="comment220"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="220" type="hidden">
+				<a name="comment220"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/4aabed0de12b643fc4adb8044493c1a0.gif" alt=""><span>FJ</span></span>		<span class="author">Fredrik Johansson</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">Wow! This was clear! 
+
+Very nice tutorial, Lionite</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/220">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment211">
+	<a name="comment211"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="211" type="hidden">
+				<a name="comment211"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/82cd05ed7ff041cad7e0ef7090a07563.gif" alt=""><span>AR</span></span>		<span class="author">Anthony Rutledge</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">This is a top not tutorial for beginners. It is well done, clear, and concise.
+A top, top notch version would do OOP with prepared statements calling MySQL stored procedures, all while using exceptions as the only error handling mechanism. </blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/211">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment210">
+	<a name="comment210"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="210" type="hidden">
+				<a name="comment210"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/82cd05ed7ff041cad7e0ef7090a07563.gif" alt=""><span>AR</span></span>		<span class="author">Anthony Rutledge</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">One hang up about this piece of code ...
+
+ self::$connection = new mysqli('localhost',$config['username'],$config['password'],$config['dbname']);
+
+...is that you lose the chance to establish some client connection parameters before attempting the connection. Those who have crossed the UTF-8 bridge from days long past might suggest using the following methods or functions. For those who are interested see $mysqli::options() and $mysqli::real_connect().
+
+<a href="http://php.net/manual/en/mysqli.options.php" rel="nofollow">http://php.net/manual/en/mysqli.options.php</a>
+<a href="http://php.net/manual/en/mysqli.real-connect.php" rel="nofollow">http://php.net/manual/en/mysqli.real-connect.php</a>
+
+
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/210">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment208">
+	<a name="comment208"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="208" type="hidden">
+				<a name="comment208"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/82cd05ed7ff041cad7e0ef7090a07563.gif" alt=""><span>AR</span></span>		<span class="author">Anthony Rutledge</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">The PHP manual, at <a href="http://php.net/manual/en/mysqli.persistconns.php," rel="nofollow">http://php.net/manual/en/mysqli.persistconns.php,</a>
+ suggest that one can simply "prepend p: to the hostname when 
+connecting" to establish a persistent connection. Which method would be 
+better: static variable or p:hostname? Is this the same scenario? Will a
+ persistent connection last across executions of a script (because a 
+static variable will not)? Example: a contact form that makes a 
+connection to MySQL to generate its CAPTCHA. Then, after gathing input, 
+needs to store contact information. Two connections needed, or just one 
+(remember, you never no where form input may be coming from)?</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/208">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment202">
+	<a name="comment202"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="202" type="hidden">
+				<a name="comment202"></a>
+				<span class="avatar small color3"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/a96c7e42ed8cc631d54be8a091742365.gif" alt=""><span>PF</span></span>		<span class="author">php fan</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">top notch article! must read :D</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/202">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment199">
+	<a name="comment199"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="199" type="hidden">
+				<a name="comment199"></a>
+				<span class="avatar small color5"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/cc09d6b856a017a988e84367783c1663.jpg" alt=""><span>J</span></span>		<span class="author">jacuna</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">what about close connection, release results, etc?</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/199">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment209">
+	<a name="comment209"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="209" type="hidden">
+				<input name="parent_id" value="199" type="hidden">
+				<a name="comment209"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/82cd05ed7ff041cad7e0ef7090a07563.gif" alt=""><span>AR</span></span>		<span class="author">Anthony Rutledge</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">I suppose this may be the "nothing on 
+the back end will go wrong" database connection algorithm. Where error 
+handling is accounted for, it uses the PHP error handler. One 
+improvement might be to use set_error_handler() to create a custom 
+handler, then wrap throw new ErrorException($arg, $arg, ...) to convert 
+catchable PHP errors and catchable user generated errors (using 
+trigger_error()) into exceptions. Better still, set mysqli_driver's 
+report mode to MYSQLI_REPORT_STRICT to have mysqli throw exceptions 
+only. Then, embed carefully try/catch statements at the level of the 
+calling code to catch mysqli_sql_exception or other exceptions. One 
+could also imagine embedding various throw statements into a class's 
+method to alter program of other specific exceptions as needed (by 
+extending mysqli_sql_exception).</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/209/parent/199">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment191">
+	<a name="comment191"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="191" type="hidden">
+				<a name="comment191"></a>
+				<span class="avatar small color4"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/aad67e4d5d78eb07a911cba5efade474.gif" alt=""><span>SU</span></span>		<span class="author">Sergio Urra</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">Thanks!
+
+Any reason for the different quotation marks?
+
+You are using ", ' and ´ in the scripts.
+
+Best regards</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/191">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment124">
+	<a name="comment124"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="124" type="hidden">
+				<a name="comment124"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/e40e9853b3050b29100ef35a4819a270.gif" alt=""><span>JC</span></span>		<span class="author">Joe coleman</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">A fantastic source code based example. Five star explanation.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/124">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li><li id="comment122">
+	<a name="comment122"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="122" type="hidden">
+				<a name="comment122"></a>
+				<span class="avatar small color6"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/6a4f20a21a71b7e65f6507b707f1c672.gif" alt=""><span>KT</span></span>		<span class="author">Karu Tungalag</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">Great article. How do you return specific rows in the selecting rows example above?</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/122">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+			<li id="comment138">
+	<a name="comment138"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="138" type="hidden">
+				<input name="parent_id" value="122" type="hidden">
+				<a name="comment138"></a>
+				<span class="avatar small color3"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/20daa16cf56e9855c7c4385eb4cfe81d.jpg" alt=""><span>L</span></span>		<span class="author">LuMa</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">Hey, have you figured it out yet? I have the same problem :(</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/138/parent/122">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li><li id="comment139">
+	<a name="comment139"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="139" type="hidden">
+				<input name="parent_id" value="122" type="hidden">
+				<a name="comment139"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/57c5ca83b46b495185da0608f9510a2c.jpg" alt=""><span>C</span></span>		<span class="author">Chris</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>3 years ago</span>
+				<blockquote class="comment">edit: fixed</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/139/parent/122">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li><li id="comment267">
+	<a name="comment267"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="267" type="hidden">
+				<input name="parent_id" value="122" type="hidden">
+				<a name="comment267"></a>
+				<span class="avatar small color7"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/3a013476905efc3317c337f63fedd10a.gif" alt=""><span>AS</span></span>		<span class="author">Adam Shaw</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">Hi Karu,
+
+I struggled with this also. The $result return is a multidimensional array, like:
+array(1) { [0]=&gt; array(2) { ["userid"]=&gt; string(1) "1" ["count"]=&gt; string(1) "1" } } 
+
+To retrieve an individual record and in this case echo it:
+echo $result[0]['count'];
+
+I used the guide at W3schools:
+<a href="http://www.w3schools.com/php/php_arrays_multi.asp" rel="nofollow">http://www.w3schools.com/php/php_arrays_multi.asp</a>
+
+Good luck...
+Adam
+
+
+
+
+</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/267/parent/122">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li><li id="comment268">
+	<a name="comment268"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="268" type="hidden">
+				<input name="parent_id" value="122" type="hidden">
+				<a name="comment268"></a>
+				<span class="avatar small color7"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/3a013476905efc3317c337f63fedd10a.gif" alt=""><span>AS</span></span>		<span class="author">Adam Shaw</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>2 years ago</span>
+				<blockquote class="comment">PS I scoured the internet for a guide on procedural mysqli and this is by far the best.</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/268/parent/122">Flag</a>
+			</span>
+		</div>
+	</div>
+	</li>		</ul>
+	</li><li id="comment49">
+	<a name="comment49"></a>
+	<div class="wrapper">
+			
+		
+		<input name="comment_id" value="49" type="hidden">
+				<a name="comment49"></a>
+				<span class="avatar small color1"><img src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/bf262b2cb3a921555fa3990d62a279cc.gif" alt=""><span>MB</span></span>		<span class="author">Maurice Brett</span>
+			
+		
+		<span class="time"><i class="icon-clock"></i>4 years ago</span>
+				<blockquote class="comment">I have read your article using PHP with MySQL - The right way 
+It really impressed me very much.
+
+But I cant seem to make use of it because I am not able to call the functions.
+
+Can you give an example?</blockquote>
+		
+		
+		<div class="actions">
+						<a class="small-button grey-button reply icon-reply">Reply</a>
+							
+			<span class="right">
+				<a class="icon-flag" rel="nofollow" href="https://www.binpress.com/app/flagcomment/id/49">Flag</a>
+			</span>
+		</div>
+	</div>
+		
+	<ul class="replies">
+		
+		</ul>
+	</li>		</ul>		
+		
+	</div>
+	</div>	
+		
+</div>			<div class="clear" style="clear:both;"></div>
+		</div>
+		<div id="footer-push"></div>
+	</div>
+	<div id="footer">
+	<div class="footer-top">
+		<div class="width">
+			<a href="https://www.binpress.com/content/about">About us</a>
+			<a href="https://www.binpress.com/contact">Contact Us</a>
+			<a href="https://www.binpress.com/page/terms">Terms &amp; Conditions</a>
+			<a href="https://www.binpress.com/page/privacy">Privacy Policy</a>
+		</div>
+	</div>
+	<div class="width">
+
+		<div class="col">
+			<h3>Selling Digital Products</h3>
+			<a href="https://www.binpress.com/features/store">Your Online Store</a>
+			<a href="https://www.binpress.com/content/sell-software-online">Business Software</a>
+			<a href="https://www.binpress.com/content/sell-games-online">Computer Games</a>
+			<a href="https://www.binpress.com/content/sell-code-libraries">Source-Code Libraries</a>
+			<a href="https://www.binpress.com/content/eu-vat-2015">EU VAT collection</a>
+		</div>
+		<div class="col">
+			<h3>The Binpress Marketplace</h3>
+			<a href="https://www.binpress.com/browse">Browse the marketplace</a>
+			<a href="https://www.binpress.com/features/marketplace">Publish your products</a>
+			<a href="https://www.binpress.com/content/guidelines">Publishing Guidelines</a>
+			<a href="https://www.binpress.com/tutorials">Software Development Tutorials</a>
+		</div>
+		<div class="col">
+			<h3>Learn More</h3>
+			<a href="https://www.binpress.com/guides">Binpress Guides</a>
+			<a href="https://www.binpress.com/blog">Blog</a>
+			<a href="https://www.binpress.com/forum">Forum</a>
+			<a href="https://www.binpress.com/content/faq">Frequently Asked Questions</a>
+			<a href="https://www.binpress.com/dfp/start">Digital Fulfillment on your site</a>
+		</div>
+
+		<div class="social-profiles">
+			<a class="icon-facebook social" href="https://www.facebook.com/binpress"></a>
+			<a class="icon-twitter social" href="https://www.twitter.com/binpress"></a>
+			<a class="icon-gplus social" href="https://plus.google.com/u/0/+Binpress/posts"></a>
+			<a class="logo" href="https://www.binpress.com/" title="Homepage - Binpress">Your own digital store</a>
+		</div>
+
+	</div>
+</div>	<script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/jquery.js"></script>
+<script>!window.jQuery && document.write('<script src="js/jq/jquery.min.js"><\/script>')</script>
+<script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/jquery-ui.js"></script>
+<script>!window.jQuery.ui && document.write('<script src="js/jq/jquery-ui.min.js"><\/script>')</script>
+<script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/a.js"></script>
+<script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/a_002.js"></script>
+		<!-- begin olark code --><script data-cfasync="false" type="text/javascript">/*{literal}<![CDATA[*/
+
+		window.olark||(function(c){var 
+f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var
+ nt=function(){f[z]=function(){(a.s=a.s||[]).push(arguments)};var 
+a=f[z]._={},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={0:+new
+ Date};a.P=function(u){a.p[u]=new Date-a.p[0]};function 
+s(){a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var
+ ld=function(){function p(hd){hd="head";return["<",hd,"></",hd,"><",i,' 
+onl' + 'oad="var 
+d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var
+ i="body",m=d[i];if(!m){return setTimeout(ld,100)}a.P(1);var 
+j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[
+ 
+]+6/.test(navigator.userAgent)){b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{b.contentWindow[g].open()}catch(w){c[e]=d[e];o="javascript:var
+ d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{var 
+t=b.contentWindow[g];t.write(p());t.close()}catch(x){b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({loader:
+ 
+"static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+
+			/* custom configuration goes here (www.olark.com/documentation) */
+			olark.identify('3407-350-10-2744');/*]]>{/literal}*/</script><noscript><a
+ href="https://www.olark.com/site/3407-350-10-2744/contact" 
+title="Contact us" target="_blank">Questions? Feedback?</a> powered by 
+<a href="http://www.olark.com?welcome" title="Olark live chat 
+software">Olark live chat software</a></noscript><!-- end olark code --><script type="text/javascript">olark('api.visitor.updateCustomFields',{"visit_id":"10377061"});</script><script type="text/javascript">
+adroll_adv_id = "2RIEOSPSWNCFZOUITXIIM7";
+adroll_pix_id = "X4QCHJ7ZUBFSTP7ACJ34TI";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<script type="text/javascript">
+  maxmind_user_id = "62188";
+  (function() {
+    var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true;
+    mt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'device.maxmind.com/js/device.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mt, s);
+  })();
+</script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new
+ Date().getTime()]);var 
+e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","bam.nr-data.net","7d8608a34f","3053298","YFdVYEsAVxdYAhAICVkddldNCFYKFhINFQMYRkJAVhNQBVUSSxMDVlY=",0,151,new
+ Date().getTime(),"","","","",""]);</script>
+<iframe data-olark="true" title="olark chat box" style="width: 0px; height: 0px; position: absolute; left: 0px; bottom: 0px; border: medium none;"></iframe><script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/nr-100.js"></script><script type="text/javascript" src="Using%20PHP%20with%20MySQL%20-%20the%20right%20way%20-%20Tutorial%20-%20Binpress_files/7d8608a34f"></script><div data-olark="true"><div id="olark-wrapper" class="" role="complementary" aria-label="olark-chat-box" data-reactid=".0"><button class="olark-launch-button olark-chat-tab olark-bottom-left olark-size-md" tabindex="0" aria-hidden="false" data-reactid=".0.2"><svg x="0px" y="0px" viewBox="0 0 28 18" aria-label="small picture of an envelope signifying an email address" role="img" data-reactid=".0.2.0"><title data-reactid=".0.2.0.0">Envelope Icon</title><desc data-reactid=".0.2.0.1">small picture of an envelope signifying an email address</desc><path fill="#ffffff" d="M28,3.2C28,1.5,26.5,0,24.8,0H3.2C1.5,0,0,1.5,0,3.2v11.5C0,16.5,1.5,18,3.2,18h21.5c1.8,0,3.2-1.5,3.2-3.2 V3.2z M24.7,14.8c-0.2,0.1-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.3l-5-5.3l-3.6,3c-0.3,0.2-0.6,0.3-0.9,0.3s-0.7-0.1-0.9-0.4l-3.6-3 l-5,5.3c-0.2,0.2-0.4,0.3-0.6,0.3c-0.2,0-0.4-0.1-0.6-0.2c-0.3-0.3-0.4-0.8,0-1.2l4.9-5.3L3.3,4.5C3,4.2,2.9,3.6,3.2,3.3 C3.5,2.9,4,2.9,4.4,3.2l9.6,7.9l9.6-7.9c0.4-0.3,0.9-0.2,1.2,0.1c0.3,0.4,0.2,0.9-0.1,1.2l-4.8,3.9l4.9,5.3 C25.1,14,25,14.5,24.7,14.8z" data-reactid=".0.2.0.2"></path></svg><div class="olark-notification-badge olark-hidden" data-reactid=".0.2.1"><div class="olark-notification-badge-text" data-reactid=".0.2.1.0">0</div></div><p class="olark-button-text" data-reactid=".0.2.2">Contact us!</p></button><div id="olark-container" class="olark-hidden olark-bottom-left olark-size-md" data-reactid=".0.3"><div class="olark-top-bar" data-reactid=".0.3.0"><div class="olark-top-bar-text" data-reactid=".0.3.0.0">Contact us!</div><div class="olark-top-bar-button" role="button" tabindex="-1" aria-hidden="true" aria-label="Minimize Chat" data-reactid=".0.3.0.1"><svg viewBox="0 0 15.1 8.9" fill="#ffffff" aria-label="a small down arrow to minimize chat box" role="img" data-reactid=".0.3.0.1.0"><title data-reactid=".0.3.0.1.0.0">Arrow Down</title><desc data-reactid=".0.3.0.1.0.1">a small down arrow to minimize chat box</desc><polygon class="olark-top-bar-arrow" points="0.2,1.4 7.6,8.9 15.1,1.4 13.7,0 7.6,6 1.6,0" data-reactid=".0.3.0.1.0.2"></polygon></svg></div></div><div class="olark-conversation-container olark-form-conversation-container olark-no-message-form olark-offline-message-container" data-reactid=".0.3.1"><div class="olark-form-message" data-reactid=".0.3.1.0">We're not around, but we'd love to chat another time.</div><div class="olark-form-container" data-reactid=".0.3.1.1"><form class="olark-form" novalidate="" data-reactid=".0.3.1.1.0"><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$fname"><input name="fname" class="olark-form-input" id="olark-form-input-fname" placeholder="" tabindex="-1" aria-hidden="true" autocomplete="on" required="" aria-label="&lt;click here&gt; and type your Name" data-reactid=".0.3.1.1.0.0:$fname.0" type="text"><label class="olark-float-label" for="olark-form-input-fname" data-reactid=".0.3.1.1.0.0:$fname.1">&lt;click here&gt; and type your Name</label><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$fname.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" aria-label="required asterisk signifies that this field can not be left blank" role="img" data-reactid=".0.3.1.1.0.0:$fname.2.0"><title data-reactid=".0.3.1.1.0.0:$fname.2.0.0">Required Asterisk</title><desc data-reactid=".0.3.1.1.0.0:$fname.2.0.1">signifies that this field can not be left blank</desc><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$fname.2.0.2"></path></svg></span></div><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$email"><input name="email" class="olark-form-input" id="olark-form-input-email" placeholder="" tabindex="-1" aria-hidden="true" autocomplete="on" required="" aria-label="&lt;click here&gt; and type your Email" data-reactid=".0.3.1.1.0.0:$email.0" type="email"><label class="olark-float-label" for="olark-form-input-email" data-reactid=".0.3.1.1.0.0:$email.1">&lt;click here&gt; and type your Email</label><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$email.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" aria-label="required asterisk signifies that this field can not be left blank" role="img" data-reactid=".0.3.1.1.0.0:$email.2.0"><title data-reactid=".0.3.1.1.0.0:$email.2.0.0">Required Asterisk</title><desc data-reactid=".0.3.1.1.0.0:$email.2.0.1">signifies that this field can not be left blank</desc><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$email.2.0.2"></path></svg></span></div><div class="olark-form-input-container" data-reactid=".0.3.1.1.0.0:$body"><div data-reactid=".0.3.1.1.0.0:$body.0"><div class="olark-form-message-input olark-clone-textarea" data-reactid=".0.3.1.1.0.0:$body.0.0" style="width: 330px !important; overflow-wrap: break-word;">We're not around but we still want to hear from you!  Leave us a note:</div><textarea class="olark-form-message-input" tabindex="-1" aria-hidden="true" name="body" id="olark-form-input-body" placeholder="We're not around but we still want to hear from you!  Leave us a note:" title="We're not around but we still want to hear from you!  Leave us a note:" required="" aria-label="We're not around but we still want to hear from you!  Leave us a note:" data-reactid=".0.3.1.1.0.0:$body.0.1" style="height: 48px !important;"></textarea></div><span class="olark-required-asterisk" data-reactid=".0.3.1.1.0.0:$body.2"><svg viewBox="0 0 20 20" x="0" y="0" fill="currentcolor" aria-label="required asterisk signifies that this field can not be left blank" role="img" data-reactid=".0.3.1.1.0.0:$body.2.0"><title data-reactid=".0.3.1.1.0.0:$body.2.0.0">Required Asterisk</title><desc data-reactid=".0.3.1.1.0.0:$body.2.0.1">signifies that this field can not be left blank</desc><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10s10-4.5,10-10C20,4.5,15.5,0,10,0z M13.8,13.6L12,15l-2-3L8,15l-1.8-1.4l2-2.8 L5,9.6l0.8-2.2L9,8.6L8.8,5h2.4L11,8.6l3.2-1.3L15,9.6l-3.2,1.1L13.8,13.6z" data-reactid=".0.3.1.1.0.0:$body.2.0.2"></path></svg></span></div><button class="olark-form-send-button" type="submit" aria-hidden="true" tabindex="-1" data-reactid=".0.3.1.1.0.2">Send</button></form></div></div><noscript data-reactid=".0.3.4"></noscript><div class="olark-branding-link" data-reactid=".0.3.5"><a role="button" aria-hidden="true" tabindex="-1" data-reactid=".0.3.5.0">Powered by Olark</a></div></div></div></div></body></html>
